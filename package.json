@@ -15,7 +15,7 @@
     "url": "https://github.com/airdcpp-web/airdcpp-create-extension/"
   },
   "scripts": {
-    "build": "rimraf dist && rollup -c",
+    "build": "rimraf dist && webpack -p",
     "clean": "rimraf dist/*"
   },
   "devDependencies": {
