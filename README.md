@@ -1,3 +1,3 @@
-# airdcpp-chat-filter
+# airdcpp-create-extension
 
-Test extensions for airdcpp-webapi
+
