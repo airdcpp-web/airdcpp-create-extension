@@ -1,4 +1,4 @@
-const ApiSocket = require('airdcpp-apisocket');
+const ApiSocket = require('airdcpp-apisocket').Socket;
 
 const defaultSocketOptions = {
 	// API settings
@@ -51,14 +51,14 @@ module.exports = function(ScriptEntry, socketOptions = {}) {
 
 	const handlePing = () => {
 		if (lastPing + 10000 < new Date().getTime()) {
-			console.log('Socket timed out, exiting...');
+			socket.logger.error('Socket timed out, exiting...');
 			process.exit(1);
 			return;
 		}
 
 		socket.post('sessions/activity')
 			.then(_ => lastPing = new Date().getTime())
-			.catch(_ => console.log('Ping failed'));
+			.catch(_ => socket.logger.error('Ping failed'));
 	};
 
 
@@ -80,7 +80,7 @@ module.exports = function(ScriptEntry, socketOptions = {}) {
 
 	socket.onDisconnected = () => {
 		exiting = true;
-		console.log('Socket disconnected, exiting');
+		socket.logger.info('Socket disconnected, exiting');
 		process.exit(1);
 	};
 
@@ -104,5 +104,9 @@ module.exports = function(ScriptEntry, socketOptions = {}) {
 		console.log('Exit requested');
 	});*/
 
-	socket.reconnect(process.argv[Arguments.AUTH_TOKEN]);
+	socket.reconnect(process.argv[Arguments.AUTH_TOKEN], false)
+		.catch(error => {
+			socket.logger.error('Failed to connect to the server ' + process.argv[Arguments.CONNECT_URL], ', exiting...');
+			process.exit(1);
+		});
 }
