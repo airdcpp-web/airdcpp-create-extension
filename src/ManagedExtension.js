@@ -106,7 +106,7 @@ module.exports = function(ScriptEntry, socketOptions = {}) {
 
 	socket.reconnect(process.argv[Arguments.AUTH_TOKEN], false)
 		.catch(error => {
-			socket.logger.error('Failed to connect to the server ' + process.argv[Arguments.CONNECT_URL], ', exiting...');
+			socket.logger.error('Failed to connect to server ' + process.argv[Arguments.CONNECT_URL] + ', exiting...');
 			process.exit(1);
 		});
 }

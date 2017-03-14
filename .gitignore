@@ -4,4 +4,6 @@ coverage
 npm-debug.log
 .idea
 /dist
-/tools/settings.js
+/devtools/settings.js
+/devtools/settings
+/devtools/logs
