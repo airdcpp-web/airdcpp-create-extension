@@ -1,6 +1,6 @@
 {
   "name": "airdcpp-create-extension",
-  "version": "0.0.1-beta3",
+  "version": "0.0.1-beta4",
   "description": "Starter project for AirDC++ extension development. This package doesn't provide any actual features for end users.",
   "license": "MIT",
   "author": {
@@ -32,6 +32,7 @@
     "babel-preset-stage-1": "^6.5.0",
     "chalk": "^1.1.3",
     "cross-env": "^3.2.3",
+    "minimist": "^1.2.0",
     "nodemon": "^1.11.0",
     "rimraf": "^2.5.2",
     "webpack": "^2.2.1"

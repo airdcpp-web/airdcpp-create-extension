@@ -18,11 +18,7 @@ process.stdout.write = messageLog.write.bind(messageLog);
 process.stderr.write = errorLog.write.bind(errorLog);*/
 
 
-const Arguments = {
-	CONNECT_URL: 2,
-	AUTH_TOKEN: 3,
-	EXTENSION_PATH: 4
-};
+const argv = require('minimist')(process.argv.slice(2));
 
 
 // This file will later be moved to airdcpp-apisocket
@@ -34,7 +30,7 @@ module.exports = function(ScriptEntry, socketOptions = {}) {
 			defaultSocketOptions,
 			socketOptions,
 			{
-				url: process.argv[Arguments.CONNECT_URL]
+				url: argv.apiUrl
 			}
 		)
 	);
@@ -71,8 +67,8 @@ module.exports = function(ScriptEntry, socketOptions = {}) {
 			const { user, system_info } = sessionInfo;
 			ScriptEntry(socket, {
 				name: user.username,
-				configPath: process.argv[Arguments.EXTENSION_PATH] + 'settings' + system_info.path_separator,
-				logPath: process.argv[Arguments.EXTENSION_PATH] + 'logs' + system_info.path_separator,
+				configPath: argv.settingsPath,
+				logPath: argv.logPath,
 				sessionInfo
 			});
 		}, 10);
@@ -104,9 +100,9 @@ module.exports = function(ScriptEntry, socketOptions = {}) {
 		console.log('Exit requested');
 	});*/
 
-	socket.reconnect(process.argv[Arguments.AUTH_TOKEN], false)
+	socket.reconnect(argv.authToken, false)
 		.catch(error => {
-			socket.logger.error('Failed to connect to server ' + process.argv[Arguments.CONNECT_URL] + ', exiting...');
+			socket.logger.error('Failed to connect to server ' + argv.apiUrl + ', exiting...');
 			process.exit(1);
 		});
 }
