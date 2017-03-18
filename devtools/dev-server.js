@@ -29,8 +29,8 @@ const onExtensionRegistered = (extensionInfo) => {
 
 const getExtensionInfo = (sessionInfo, packageFile) => {
 	// Init logs
-	const logPath = path.resolve(__dirname, 'logs' + sessionInfo.system_info.path_separator);
-	const configPath = path.resolve(__dirname, 'settings' + sessionInfo.system_info.path_separator);
+	const logPath = path.resolve(__dirname, 'logs') + sessionInfo.system_info.path_separator;
+	const configPath = path.resolve(__dirname, 'settings') + sessionInfo.system_info.path_separator;
 
 	if (!fs.existsSync(logPath)){
 		fs.mkdirSync(logPath);

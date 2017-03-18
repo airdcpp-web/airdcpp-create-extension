@@ -8,8 +8,8 @@ const webpackConfig = require('../webpack.config.js');
 
 let started = false;
 
-webpack(webpackConfig).watch(100, function(err, stats) {
-	if (err) {
+webpack(webpackConfig).watch(250, function(err, stats) {
+	if (err || stats.hasErrors()) {
 		console.error(err);
 		return;
 	}
