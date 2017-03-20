@@ -1,6 +1,6 @@
 {
   "name": "airdcpp-create-extension",
-  "version": "0.0.1-beta4",
+  "version": "0.0.1-beta5",
   "description": "Starter project for AirDC++ extension development. This package doesn't provide any actual features for end users.",
   "license": "MIT",
   "author": {
@@ -20,7 +20,8 @@
   "scripts": {
     "build": "npm run clean && cross-env NODE_ENV=production webpack",
     "clean": "rimraf dist",
-    "start": "node devtools/watch.js"
+    "start": "node devtools/watch.js",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "airdcpp-apisocket": "1.0.0-beta.11",
@@ -37,5 +38,9 @@
     "rimraf": "^2.5.2",
     "webpack": "^2.2.1"
   },
-  "main": "dist/main.js"
+  "main": "dist/main.js",
+  "airdcpp": {
+    "apiVersion": 1,
+    "minApiFeatureLevel": 0
+  }
 }

@@ -20,6 +20,7 @@ webpack(webpackConfig).watch(250, function(err, stats) {
 	const info = stats.toJson();
 	if (stats.hasErrors()) {
 		console.error(info.errors);
+		return;
 	}
 
 	if (stats.hasWarnings()) {

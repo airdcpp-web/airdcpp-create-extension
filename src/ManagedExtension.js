@@ -3,7 +3,7 @@ const ApiSocket = require('airdcpp-apisocket').Socket;
 const defaultSocketOptions = {
 	// API settings
 	autoReconnect: false,
-	logLevel: 'verbose',
+	
 	ignoredRequestPaths: [
 		'sessions/activity'
 	]
@@ -23,12 +23,14 @@ const argv = require('minimist')(process.argv.slice(2));
 
 // This file will later be moved to airdcpp-apisocket
 
-module.exports = function(ScriptEntry, socketOptions = {}) {
+module.exports = function(ScriptEntry, userSocketOptions = {}) {
 	const socket = ApiSocket(
 		Object.assign(
-			{},
+			{
+				logLevel: argv.debug ? 'verbose' : 'info',
+			},
 			defaultSocketOptions,
-			socketOptions,
+			userSocketOptions,
 			{
 				url: argv.apiUrl
 			}
