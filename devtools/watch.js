@@ -30,13 +30,13 @@ webpack(webpackConfig).watch(250, function(err, stats) {
 	if (!started) {
 		started = true;
 
-		const command = path.resolve(__dirname, 'dev-server.js');
+		const serverPath = path.resolve(__dirname, 'dev-server.js');
 		nodemon({
 			execMap: {
-				js: 'node'
+				js: 'node --inspect'
 			},
 			args: process.argv.length > 2 ? process.argv.slice(2) : [ path.resolve(__dirname, '../dist/main.js') ],
-			script: command,
+			script: serverPath,
 
 			// Don't watch anything
 			ignore: ['*'],

@@ -20,8 +20,9 @@
   "scripts": {
     "build": "npm run clean && cross-env NODE_ENV=production webpack",
     "clean": "rimraf dist",
-    "start": "node devtools/watch.js",
-    "prepublish": "npm run build"
+    "start": "node devtools/watch.js ../dist/main.js",
+    "prepublish": "npm run build",
+    "webpack": "webpack"
   },
   "devDependencies": {
     "airdcpp-apisocket": "1.0.0-beta.11",
@@ -36,6 +37,7 @@
     "minimist": "^1.2.0",
     "nodemon": "^1.11.0",
     "rimraf": "^2.5.2",
+    "source-map-support": "^0.4.14",
     "webpack": "^2.2.1"
   },
   "main": "dist/main.js",

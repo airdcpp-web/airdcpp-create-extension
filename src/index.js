@@ -1,3 +1,4 @@
+require("source-map-support").install();
 const ManagedExtension = require('./ManagedExtension');
 
 
