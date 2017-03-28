@@ -1,4 +1,4 @@
-const ApiSocket = require('airdcpp-apisocket').Socket;
+const ApiSocket = require('airdcpp-apisocket');
 
 const defaultSocketOptions = {
 	// API settings
@@ -24,6 +24,8 @@ const argv = require('minimist')(process.argv.slice(2));
 // This file will later be moved to airdcpp-apisocket
 
 module.exports = function(ScriptEntry, userSocketOptions = {}) {
+	let onStart, onStop;
+
 	const socket = ApiSocket(
 		Object.assign(
 			{
@@ -34,10 +36,21 @@ module.exports = function(ScriptEntry, userSocketOptions = {}) {
 			{
 				url: argv.apiUrl
 			}
-		)
+		),
+		require('websocket').w3cwebsocket
 	);
-	
-	let exiting = false;
+
+	const Extension = ScriptEntry(socket, {
+		name: argv.name,
+		configPath: argv.settingsPath,
+		logPath: argv.logPath,
+		set onStart(handler) {
+			onStart = handler;
+		},
+		set onStop(handler) {
+			onStop = handler;
+		},
+	});
 
 
 	// Ping handler
@@ -50,6 +63,7 @@ module.exports = function(ScriptEntry, userSocketOptions = {}) {
 	const handlePing = () => {
 		if (lastPing + 10000 < new Date().getTime()) {
 			socket.logger.error('Socket timed out, exiting...');
+			stopExtension();
 			process.exit(1);
 			return;
 		}
@@ -65,46 +79,40 @@ module.exports = function(ScriptEntry, userSocketOptions = {}) {
 		// Use timeout so that we won't throw if the code doesn't work
 		setTimeout(_ => {
 			setInterval(handlePing, 4000);
-
-			const { user, system_info } = sessionInfo;
-			ScriptEntry(socket, {
-				name: user.username,
-				configPath: argv.settingsPath,
-				logPath: argv.logPath,
-				sessionInfo
-			});
+			
+			if (onStart) {
+				onStart(sessionInfo);
+			}
 		}, 10);
 	};
 
 	socket.onDisconnected = () => {
-		exiting = true;
+		stopExtension();
 		socket.logger.info('Socket disconnected, exiting');
 		process.exit(1);
 	};
 
-	/*process.on('exit', function () {
-		console.log('onExit');
-		if (exiting) {
-			return;
+	const stopExtension = () => {
+		if (onStop) {
+			onStop();
 		}
+	};
 
-		exiting = true;
-		console.log('Exit requested');
-	});
+	const onSigint = () => {
+		logStatus('Exit requested');
+		process.exit();
+	};
 
-	process.on('SIGINT', function () {
-		console.log('SIGINT');
-		if (exiting) {
-			return;
-		}
+	// Closing
+	process.on('exit', stopExtension);
 
-		exiting = true;
-		console.log('Exit requested');
-	});*/
+	process.on('SIGINT', onSigint);
+	process.on('SIGTERM', onSigint);
 
 	socket.reconnect(argv.authToken, false)
 		.catch(error => {
 			socket.logger.error('Failed to connect to server ' + argv.apiUrl + ', exiting...');
+			stopExtension();
 			process.exit(1);
 		});
 }

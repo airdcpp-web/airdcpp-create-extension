@@ -52,7 +52,7 @@ module.exports = function (socket, extensionInfo, settingDefinitions) {
 		socket.addListener('extensions', 'extension_settings_updated', onSettingsUpdated, EXTENSION_NAME);
 	}
 
-	const initialize = () => {
+	const load = () => {
 		let settingsLoaded = false;
 
 		// Attempt to load saved settings
@@ -72,13 +72,11 @@ module.exports = function (socket, extensionInfo, settingDefinitions) {
 		}
 
 		registerApi(settingsLoaded)
-			.catch(err => console.error('Failed to register settings: ' + err.message));
+			.catch(err => socket.logger.error('Failed to register settings: ' + err.message));
 	};
 
-
-	initialize();
-
 	return {
-		getValue
+		getValue,
+		load
 	};
 };
