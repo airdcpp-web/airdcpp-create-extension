@@ -4,20 +4,30 @@
 
 const SettingDefinitions = [
 	{
-		"key": 'spam_on_startup',
-		"title": 'Show a test message on startup',
-		"defaultValue": true,
-		"type": 'boolean'
+		key: 'spam_on_startup',
+		title: 'Show a test message on startup',
+		defaultValue: true,
+		type: 'boolean'
 	}, {
-		"key": 'spam_interval',
-		"title": 'Test message send interval (minutes, 0 = disabled)',
-		"defaultValue": 60,
-		"type": 'number'
+		key: 'spam_interval',
+		title: 'Test message send interval (minutes, 0 = disabled)',
+		defaultValue: 60,
+		type: 'number'
 	}
 ];
 
+const CONFIG_VERSION = 1;
+
+const SettingsManager = require('airdcpp-extension-settings');
+
 module.exports = function (socket, extension) {
-	const settings = require('./SettingsManager.js')(socket, extension, SettingDefinitions);
+	const settings = SettingsManager(socket, {
+		extensionName: extension.name, 
+		configFile: extension.configPath + 'config.json',
+		configVersion: CONFIG_VERSION,
+		definitions: SettingDefinitions,
+	});
+
 	let sendInterval;
 
 	const sendEventMessage = () => {
@@ -31,8 +41,8 @@ module.exports = function (socket, extension) {
 			.catch(error => console.error('Failed to send test message: ' + error.message));
 	};
 
-	extension.onStart = (sessionInfo) => {
-		settings.load();
+	extension.onStart = async (sessionInfo) => {
+		await settings.load();
 
 		// Send initial message
 		if (settings.getValue('spam_on_startup')) {
