@@ -6,20 +6,22 @@ const SettingDefinitions = [
 	{
 		key: 'spam_on_startup',
 		title: 'Show a test message on startup',
-		defaultValue: true,
+		default_value: true,
 		type: 'boolean'
 	}, {
 		key: 'spam_interval',
 		title: 'Test message send interval (minutes, 0 = disabled)',
-		defaultValue: 60,
+		default_value: 60,
 		type: 'number'
 	}
 ];
 
 const CONFIG_VERSION = 1;
 
+// Settings manager docs: https://github.com/airdcpp-web/airdcpp-extension-settings-js
 const SettingsManager = require('airdcpp-extension-settings');
 
+// Entry point docs: https://github.com/airdcpp-web/airdcpp-extension-js#extension-entry-structure
 module.exports = function (socket, extension) {
 	const settings = SettingsManager(socket, {
 		extensionName: extension.name, 

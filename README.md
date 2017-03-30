@@ -4,8 +4,9 @@ Generic starter project for creating extension for AirDC++.
 
 ## Resources
 
-- AirDC++ Web API reference (http://apidocs.airdcpp.net)
-- AirDC++ API connector (Javascript) documentation (https://github.com/airdcpp-web/airdcpp-apisocket-js)
+- [AirDC++ Web API reference](http://apidocs.airdcpp.net)
+- [AirDC++ API connector documentation](https://github.com/airdcpp-web/airdcpp-apisocket-js)
+- [Extension examples](https://github.com/airdcpp-web/airdcpp-extension-js/tree/master/examples)
 
 ## Installation and usage
 
@@ -18,13 +19,20 @@ You must have [node.js](https://nodejs.org) installed. This starter project will
 
 ## Developing
 
+Extension's entry point for extension-specific code is `src/main.js`. Files inside the `dist` directory are generated automatically and should not be modified by hand.
+
+### Running/debugging the extension
+
 - Create a copy of ``devserver/settings.js.example`` and rename it to ``devserver/settings.js``
 - Edit ``devserver/settings.js`` to contain the correct API address and user credentials
-- Run `npm start` to start the devepment server
 
-You should now see the test message in application's event log.
+**Visual Studio Code**
 
-Extension's entry point for extension-specific code is `src/main.js`. The extension will be restarted automatically every time the source files are updated. Files inside the `dist` directory are generated automatically and should not be modified by hand.
+The project contains debug configuration files for [Visual Studio Code](https://code.visualstudio.com) so it can be launched directly via the *Debug* panel.
+
+**Running from terminal**
+
+Run `npm start` to start the development server. The extension will be restarted automatically every time the source files are updated.
 
 
 ## Publishing extensions
