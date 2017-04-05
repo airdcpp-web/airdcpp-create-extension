@@ -136,7 +136,7 @@ If you still want to continue using Webpack as part of your build process, it's 
 
 The downside of using bundledDependencies is increased extension installation size and (usually) large amount of files to install.
 
-#### Keeping the extension responsive
+### Keeping the extension responsive
 
 Since extensions use WebSockets to communicate with the API, they are pinged regularly by the server (application) to ensure that the connection stays alive. The default ping timeout is 10 seconds and if a managed extension is unable to response to a ping request within that time, the extension will exit. Unresponsive extensions are also incapable of handling possible API hooks, that may cause visible delays to the user (such in cases where you have hooks for incoming/outgoing chat messages). It's thus recommended to perform possible long-running operations (such as handling of large files on disk) asynchronously so that they won't block the main thread. 
 
