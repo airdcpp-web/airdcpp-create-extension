@@ -13,7 +13,9 @@ Generic starter project for creating extension for AirDC++.
 
 ### Preparation
 
-You must have [node.js](https://nodejs.org) installed. This starter project will automatically transpile your code with [babel](https://babeljs.io) to make many of the latest language features run with older version of node.js. However, installing the latest LTS version for devepment use is highly recommended (the version offered by package managers may be somewhat outdated).
+It's required to have [node.js](https://nodejs.org) installed. Having the latest LTS version installed for development use is highly recommended. Note that when using Linux, the version offered by package manager may be somewhat outdated.
+
+This starter project will automatically transpile your code with [babel](https://babeljs.io) to make many of the latest language features run with older version of node.js.
 
 - Download the [latest available release](https://github.com/airdcpp-web/airdcpp-create-extension/releases) and extract it to any location on your system
 - Run `npm install` inside the root extension directory
@@ -29,11 +31,11 @@ Extension's entry point for extension-specific code is `src/main.js`. Files insi
 
 **Visual Studio Code**
 
-The project contains debug configuration files for [Visual Studio Code](https://code.visualstudio.com) so it can be launched directly via the *Debug* panel.
+The project contains debug configuration files for [Visual Studio Code](https://code.visualstudio.com) so that extension can be launched directly via editor's *Debug* panel.
 
 **Running from terminal**
 
-Run `npm start` to start the development server. The extension will be restarted automatically every time the source files are updated.
+If you don't want to use Visual Studio Code, you may launch a development server from terminal by running command `npm start`. The extension will be restarted automatically every time the source files are updated.
 
 
 ## Publishing extensions
