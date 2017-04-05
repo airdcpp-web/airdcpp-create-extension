@@ -13,7 +13,7 @@ Generic starter project for creating extension for AirDC++.
 
 ### Preparation
 
-You must have [node.js](https://nodejs.org) installed. This starter project will automatically transpile your code with [babel](https://babeljs.io) to make many of the latest language features run with older version of node.js.
+You must have [node.js](https://nodejs.org) installed. This starter project will automatically transpile your code with [babel](https://babeljs.io) to make many of the latest language features run with older version of node.js. However, installing the latest LTS version for devepment use is highly recommended (the version offered by package managers may be somewhat outdated).
 
 - Download the [latest available release](https://github.com/airdcpp-web/airdcpp-create-extension/releases) and extract it to any location on your system
 - Run `npm install` inside the root extension directory
@@ -136,6 +136,11 @@ If you still want to continue using Webpack as part of your build process, it's 
 
 The downside of using bundledDependencies is increased extension installation size and (usually) large amount of files to install.
 
+#### Keeping the extension responsive
+
+Since extensions use WebSockets to communicate with the API, they are pinged regularly by the server (application) to ensure that the connection stays alive. The default ping timeout is 10 seconds and if a managed extension is unable to response to a ping request within that time, the extension will exit. Unresponsive extensions are also incapable of handling possible API hooks, that may cause visible delays to the user (such in cases where you have hooks for incoming/outgoing chat messages). It's thus recommended to perform possible long-running operations (such as handling of large files on disk) asynchronously so that they won't block the main thread. 
+
+However, there are certain caveats in heavily asynchronous code as well. If a large amount of (CPU-bound) asynchronous tasks are being queued simultaneously, they will take priority over subsequently initiated actions, and once again, your main thread may be blocked for a long time. When performing heavy operations that may utilize a large number of asynchronous functions (such as recursively iterating over all shared directories on filesystem), you should be vary of the number of queued operations and possibly wait for the existing ones to complete before launching new ones. See the [scanning method of airdcpp-release-validator](https://github.com/maksis/airdcpp-release-validator/blob/master/src/Scanner.js) for an example of recursive, asynchronous directory scanner.
 
 [build-badge]: https://img.shields.io/travis/airdcpp-web/airdcpp-create-extension/master.svg?style=flat-square
 [build]: https://travis-ci.org/airdcpp-web/airdcpp-create-extension
