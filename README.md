@@ -5,7 +5,7 @@ Generic starter project for creating extension for AirDC++.
 ## Resources
 
 - [AirDC++ Web API reference](http://apidocs.airdcpp.net)
-- [AirDC++ API connector documentation](https://github.com/airdcpp-web/airdcpp-apisocket-js)
+- [AirDC++ API JavaScript connector documentation](https://github.com/airdcpp-web/airdcpp-apisocket-js)
 - [Extension examples](https://github.com/airdcpp-web/airdcpp-extension-js/tree/master/examples)
 - [airdcpp-release-validator extension](https://github.com/maksis/airdcpp-release-validator)
 
@@ -56,57 +56,7 @@ When publishing a new package, it may make sense to test it for a while, possibl
 
 ### package.json
 
-Please see https://docs.npmjs.com/files/package.json for generic field descriptions.
-
-#### Application-specific remarks
-
-**Required fields**
-
-`name`
-
-Extension name. **The name must start with `airdcpp-`.**
-
-`description`
-
-Extension description
-
-`version`
-
-Extension version
-
-`author` (`name` field)
-
-Author's (user)name
-
-`main`
-
-Script to launch by the application when the extension is started. This should generally not be changed.
-
-
-**Other fields**
-
-`private`
-
-If this field is set to `true`, the extension can't be accidentally published to `npm`. It also causes the application not to perform update checks for such extension from the npm registry. When writing extensions that you are not going publish on npm, it's important to enable this property so that your extension won't be replaced with another extension using the same name on npm due to updates offered to the user.
-
-`keywords`
-
-If you want the extension to be publicly listed in application's extension catalog, this field should contain the keyword `airdcpp-extensions-public`. If you don't want the extension to be listed publicly, you should omit this keyword.
-
-`engines`
-
-List of scripting engines to use for launching the extension. If the `engines` field is not set, the application will attempt to use the engine `node` by default.
-
-**airdcpp section (required)**
-
-`apiVersion`
-
-Supported API version
-
-`minApiFeatureLevel`
-
-Mininimum API feature level supported by the extension
-
+See [extension specs](https://github.com/airdcpp-web/airdcpp-extensions/) for field descriptions.
 
 ### Dependencies
 
