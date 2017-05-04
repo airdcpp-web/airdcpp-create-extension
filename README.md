@@ -7,6 +7,7 @@ Generic starter project for creating extension for AirDC++.
 - [AirDC++ Web API reference](http://apidocs.airdcpp.net)
 - [AirDC++ API JavaScript connector documentation](https://github.com/airdcpp-web/airdcpp-apisocket-js)
 - [Extension examples](https://github.com/airdcpp-web/airdcpp-extension-js/tree/master/examples)
+- [Low-level extension specifications](https://github.com/airdcpp-web/airdcpp-extensions)
 - [airdcpp-release-validator extension](https://github.com/maksis/airdcpp-release-validator)
 
 ## Installation and usage
