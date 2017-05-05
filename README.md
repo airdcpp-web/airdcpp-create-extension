@@ -2,6 +2,8 @@
 
 Generic starter project for creating extension for AirDC++.
 
+In case you have questions about extension development or the Web API, you may use the issue tracker of this project or join the dev hub at adcs://web-dev.airdcpp.net:1511
+
 ## Resources
 
 - [AirDC++ Web API reference](http://apidocs.airdcpp.net)
