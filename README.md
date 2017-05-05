@@ -2,18 +2,21 @@
 
 Generic starter project for creating extension for AirDC++.
 
+In case you have questions about extension development or the Web API, you may use the issue tracker of this project or join the dev hub at adcs://web-dev.airdcpp.net:1511
+
 ## Resources
 
 - [AirDC++ Web API reference](http://apidocs.airdcpp.net)
 - [AirDC++ API JavaScript connector documentation](https://github.com/airdcpp-web/airdcpp-apisocket-js)
 - [Extension examples](https://github.com/airdcpp-web/airdcpp-extension-js/tree/master/examples)
+- [Low-level extension specifications](https://github.com/airdcpp-web/airdcpp-extensions)
 - [airdcpp-release-validator extension](https://github.com/maksis/airdcpp-release-validator)
 
 ## Installation and usage
 
 ### Preparation
 
-It's required to have [node.js](https://nodejs.org) installed. Having the latest LTS version installed for development use is highly recommended. Note that when using Linux, the version offered by package manager may be somewhat outdated.
+It's required to have [node.js](https://nodejs.org) installed (using the latest LTS version is highly recommended). Note that when using Linux, the version offered by package manager may be somewhat outdated.
 
 This starter project will automatically transpile your code with [babel](https://babeljs.io) to make many of the latest language features run with older version of node.js.
 
@@ -56,7 +59,7 @@ When publishing a new package, it may make sense to test it for a while, possibl
 
 ### package.json
 
-See [extension specs](https://github.com/airdcpp-web/airdcpp-extensions/) for field descriptions.
+Please see the [extension specifications](https://github.com/airdcpp-web/airdcpp-extensions/#packagejson) for application-specific field remarks.
 
 ### Dependencies
 
