@@ -7,7 +7,7 @@ In case you have questions about extension development or the Web API, you may u
 ## Resources
 
 - [AirDC++ Web API reference](http://apidocs.airdcpp.net)
-- [AirDC++ API JavaScript connector documentation](https://github.com/airdcpp-web/airdcpp-apisocket-js)
+- [AirDC++ API JavaScript connector reference](https://github.com/airdcpp-web/airdcpp-apisocket-js/blob/master/GUIDE.md)
 - [Extension examples](https://github.com/airdcpp-web/airdcpp-extension-js/tree/master/examples)
 - [Low-level extension specifications](https://github.com/airdcpp-web/airdcpp-extensions)
 - [airdcpp-release-validator extension](https://github.com/maksis/airdcpp-release-validator)

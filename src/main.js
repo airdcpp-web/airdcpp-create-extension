@@ -22,6 +22,7 @@ const CONFIG_VERSION = 1;
 const SettingsManager = require('airdcpp-extension-settings');
 
 // Entry point docs: https://github.com/airdcpp-web/airdcpp-extension-js#extension-entry-structure
+// Socket reference: https://github.com/airdcpp-web/airdcpp-apisocket-js/blob/master/GUIDE.md
 module.exports = function (socket, extension) {
 	const settings = SettingsManager(socket, {
 		extensionName: extension.name, 

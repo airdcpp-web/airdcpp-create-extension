@@ -12,7 +12,6 @@
 			"program": "${workspaceRoot}\\devtools\\dev-server.js",
 			"protocol": "inspector",
 			"cwd": "${workspaceRoot}",
-			"console":"integratedTerminal",
 			"outFiles": [ "${workspaceRoot}/dist/*.js" ],
 			"preLaunchTask": "webpack"
 		}/*,
