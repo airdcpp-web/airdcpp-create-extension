@@ -18,7 +18,7 @@
     "url": "https://github.com/airdcpp-web/airdcpp-create-extension/"
   },
   "scripts": {
-    "build": "npm run clean && npm run webpack",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack",
     "clean": "rimraf dist",
     "start": "node devtools/watch.js ../dist/main.js",
     "prepublish": "npm run build",
