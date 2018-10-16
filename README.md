@@ -29,8 +29,8 @@ Extension's entry point for extension-specific code is `src/main.js`. Files insi
 
 ### Running/debugging the extension
 
-- Create a copy of ``devserver/settings.js.example`` and rename it to ``devserver/settings.js``
-- Edit ``devserver/settings.js`` to contain the correct API address and user credentials
+- Create a copy of ``devtools/settings.js.example`` and rename it to ``devtools/settings.js``
+- Edit ``devtools/settings.js`` to contain the correct API address and user credentials
 
 **Visual Studio Code**
 
