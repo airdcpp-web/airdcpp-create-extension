@@ -33,15 +33,17 @@ module.exports = function (socket, extension) {
 
 	let sendInterval;
 
-	const sendEventMessage = () => {
+	const sendEventMessage = async () => {
 		// Send a single event message
-
-		socket.post('events', {
-			// EXTENSION_VERSION is defined in the webpack config
-			text: `This is a test message sent by extension ${extension.name} ${EXTENSION_VERSION}. Please visit https://github.com/airdcpp-web/airdcpp-create-extension to find out how to develop more useful extensions than this.`,
-			severity: 'info',
-		})
-			.catch(error => console.error('Failed to send test message: ' + error.message));
+		try {
+			await socket.post('events', {
+				// EXTENSION_VERSION is defined in the webpack config
+				text: `This is a test message sent by extension ${extension.name} ${EXTENSION_VERSION}. Please visit https://github.com/airdcpp-web/airdcpp-create-extension to find out how to develop more useful extensions than this.`,
+				severity: 'info',
+			});
+		} catch (e) {
+			console.error(`Failed to send test message: ${e.message}`);
+		}
 	};
 
 	extension.onStart = async (sessionInfo) => {

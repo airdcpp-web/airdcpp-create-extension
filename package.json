@@ -1,6 +1,6 @@
 {
   "name": "airdcpp-create-extension",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "description": "Starter project for AirDC++ extension development. This package doesn't provide any actual features for end users.",
   "license": "MIT",
   "author": {
@@ -26,12 +26,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
-    "@babel/plugin-transform-async-to-generator": "^7.4.0",
-    "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/runtime": "^7.4.2",
-    "airdcpp-extension": "^1.1.0-beta",
+    "airdcpp-extension": "^1.1.0",
     "airdcpp-extension-settings": "^1.1.0-beta",
     "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
