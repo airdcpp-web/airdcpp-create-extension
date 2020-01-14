@@ -1,6 +1,6 @@
 module.exports = {
 	// API settings
-	url: 'ws://localhost:5600/api/v1/',
+	url: 'ws://localhost:5600/api/v1/', // Note: A TLS URL (wss://) with a self signed/invalid certificate won't work
 	username: 'myusername',
 	password: 'mypassword',
 
