@@ -18,6 +18,9 @@ const SettingDefinitions = [
 
 const CONFIG_VERSION = 1;
 
+// Helper method for adding context menu items, docs: https://github.com/airdcpp-web/airdcpp-apisocket-js/blob/master/GUIDE.md#addContextMenuItems
+const { addContextMenuItems } = require('airdcpp-apisocket');
+
 // Settings manager docs: https://github.com/airdcpp-web/airdcpp-extension-settings-js
 const SettingsManager = require('airdcpp-extension-settings');
 
@@ -47,6 +50,7 @@ module.exports = function (socket, extension) {
   };
 
   extension.onStart = async (sessionInfo) => {
+    // Load saved settings
     await settings.load();
 
     // Send initial message
@@ -54,9 +58,36 @@ module.exports = function (socket, extension) {
       sendEventMessage();
     }
 
-    // Set interval
+    // Set interval for sending our test message
     if (settings.getValue('spam_interval')) {
       sendInterval = setInterval(sendEventMessage, settings.getValue('spam_interval') * 60 * 1000);
+    }
+
+    // Add a test context menu item for the extension
+    const subscriberInfo = {
+      id: 'airdcpp-create-extension',
+      name: 'Extension starter kit'
+    };
+
+    if (sessionInfo.system_info.api_feature_level >= 4) {
+      addContextMenuItems(
+        socket,
+        [
+          {
+            id: 'send_test_message',
+            title: `Send test message in event log`,
+            icon: {
+              semantic: 'pink bell' // See https://fomantic-ui.com/elements/icon.html for available Web UI icons
+            },
+            onClick: () => {
+              sendEventMessage();
+            },
+            filter: selectedIds => selectedIds.indexOf(extension.name) !== -1 // Add the menu item only for our own extension
+          }
+        ],
+        'extension',
+        subscriberInfo,
+      );
     }
   };
 
