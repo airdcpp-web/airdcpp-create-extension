@@ -82,6 +82,7 @@ module.exports = function (socket, extension) {
             onClick: () => {
               sendEventMessage();
             },
+            access: 'events_edit',
             filter: selectedIds => selectedIds.indexOf(extension.name) !== -1 // Add the menu item only for our own extension
           }
         ],
