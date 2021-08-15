@@ -1,6 +1,6 @@
 {
   "name": "airdcpp-create-extension",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Starter project for AirDC++ extension development. This package doesn't provide any actual features for end users.",
   "license": "MIT",
   "author": {

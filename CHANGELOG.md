@@ -1,3 +1,7 @@
+### 1.2.1 (2021-08-15)
+
+- Update dependencies
+
 ### 1.2.0 (2020-07-11)
 
 - Update [`airdcpp-extension`](https://github.com/airdcpp-web/airdcpp-extension-js/) to version 1.4.0
