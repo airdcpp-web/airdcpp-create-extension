@@ -96,6 +96,9 @@ module.exports = function (socket, extension) {
     // Cleanup
     // When running the extension in unmanaged mode, it will not exit
     // if the server goes down (or the socket gets disconnected otherwise)
+    // 
+    // Note that all added event listeners (and hooks) will be removed automatically when the socket gets disconnected
+    // so you don't need to take care of those manually
     clearInterval(sendInterval);
   };
 };

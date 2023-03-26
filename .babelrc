@@ -2,16 +2,12 @@
   "presets": [ 
     ["@babel/env", {
       "targets": {
-        "node": "0.10"
+        "node": "10.0"
       },
       "useBuiltIns": "usage",
       "corejs": 3
     }]
   ],
-  "plugins": [
-    ["@babel/plugin-transform-runtime", {
-      "regenerator": true
-    }]
-  ],
+  "plugins": [],
   "sourceType": "unambiguous"
 }
