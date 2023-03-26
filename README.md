@@ -1,4 +1,4 @@
-# airdcpp-create-extension [![Travis][build-badge]][build] [![npm package][npm-badge]][npm]
+# airdcpp-create-extension [![Node.js CI][build-badge]][build] [![npm package][npm-badge]][npm]
 
 Generic starter project for creating extension for AirDC++.
 
@@ -97,8 +97,10 @@ Since extensions use WebSockets to communicate with the API, they are pinged reg
 
 However, there are certain caveats in heavily asynchronous code as well. If a large amount of (CPU-bound) asynchronous tasks are being queued simultaneously, they will take priority over subsequently initiated actions, and once again, your main thread may be blocked for a long time. When performing heavy operations that may utilize a large number of asynchronous functions (such as recursively iterating over all shared directories on filesystem), you should be vary of the number of queued operations and possibly wait for the existing ones to complete before launching new ones. See the [scanning method of airdcpp-release-validator](https://github.com/maksis/airdcpp-release-validator/blob/master/src/Scanner.js) for an example of recursive, asynchronous directory scanner.
 
-[build-badge]: https://img.shields.io/travis/airdcpp-web/airdcpp-create-extension/master.svg?style=flat-square
-[build]: https://travis-ci.org/airdcpp-web/airdcpp-create-extension
+
+
+[build-badge]: https://github.com/airdcpp-web/airdcpp-create-extension/actions/workflows/node.js.yml/badge.svg
+[build]: https://github.com/airdcpp-web/airdcpp-create-extension/actions/workflows/node.js.yml
 
 [npm-badge]: https://img.shields.io/npm/v/airdcpp-create-extension.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/airdcpp-create-extension
