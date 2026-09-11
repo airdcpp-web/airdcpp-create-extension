@@ -26,7 +26,7 @@ const SettingsManager = require('airdcpp-extension-settings');
 
 // Entry point docs: https://github.com/airdcpp-web/airdcpp-extension-js#extension-entry-structure
 // Socket reference: https://github.com/airdcpp-web/airdcpp-apisocket-js/blob/master/GUIDE.md
-module.exports = function (socket, extension) {
+module.exports = function main (socket, extension) {
   const settings = SettingsManager(socket, {
     extensionName: extension.name, 
     configFile: extension.configPath + 'config.json',
@@ -83,7 +83,7 @@ module.exports = function (socket, extension) {
               sendEventMessage();
             },
             access: 'events_edit',
-            filter: selectedIds => selectedIds.indexOf(extension.name) !== -1 // Add the menu item only for our own extension
+            filter: selectedIds => selectedIds.includes(extension.name) // Add the menu item only for our own extension
           }
         ],
         'extension',

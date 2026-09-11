@@ -9,18 +9,10 @@
 			"request": "launch",
 			"console": "integratedTerminal",
 			"name": "Launch Program",
-			"program": "${workspaceRoot}\\devtools\\dev-server.js",
-			"protocol": "inspector",
+			"program": "${workspaceRoot}\\devtools\\dev-server.mjs",
 			"cwd": "${workspaceRoot}",
 			"outFiles": [ "${workspaceRoot}/dist/*.js" ],
 			"preLaunchTask": "webpack"
-		}/*,
-		{
-			"type": "node",
-			"request": "attach",
-			"name": "Attach to Process",
-			"address": "localhost",
-			"port": 5858
-		}*/
+		}
 	]
 }
